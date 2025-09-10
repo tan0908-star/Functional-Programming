@@ -8,6 +8,7 @@ import Control.Monad (forM)
 import System.Directory (doesDirectoryExist, getDirectoryContents, Permissions)
 import System.FilePath ((</>))
 
+-- | 读取 path 路径下的文件后缀名为 fileLastName 并列举出其文件路径
 getRecursiveContents :: FilePath -> IO [FilePath]
 getRecursiveContents topdir = do
     names <- getDirectoryContents topdir
@@ -19,6 +20,8 @@ getRecursiveContents topdir = do
             then getRecursiveContents path
             else return [path]  -- else子句必须与if的then对齐
     return (concat paths)  -- 与do块内其他语句对齐
+
+
 
 type InfoP a = FilePath -> Permissions -> Maybe Integer -> a
 sizeP :: InfoP Integer

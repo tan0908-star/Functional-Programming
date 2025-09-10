@@ -12,5 +12,5 @@ main :: IO ()
 main = do
   getRecursiveContents path >>= mapM_ putStrLn . filter (\file -> takeExtension file == fileLastName) -- 这东西最好只有两个参数
     where
-      path = ".."
-      fileLastName = ".cabal"
+      path = "."
+      fileLastName = ".txt"
